@@ -61,7 +61,7 @@ for precision, bit in b.items():
         n_head = model["n_head"]
         d_head = model["d_head"]
         H_KV = get_H_KV(attention_type, n_head)
-        B_token = get_B_token(N, H_KV, d_head, bit)
+        B_token = get_B_token(N, H_KV, d_head, bit) # bits/token
 
         row = [model_name, precision, attention_type, H_KV, B_token]
 
