@@ -1,6 +1,9 @@
 import numpy as np
 import itertools as it
+import csv
 from tabulate import tabulate
+
+
 
 # Nested dictionary of models with their parameters
 models = {
@@ -24,7 +27,7 @@ b = {
 }
 
 # Maximum endurance writes (W) and device lifespan in seconds (t_life)
-W = 10**6
+W = 10**5
 t_life = 5 * 3.154e7 
 
 
@@ -74,7 +77,15 @@ for precision, bit in b.items():
 
 
 headers = (
-    ["Model", "Precision", "Attention", "H_KV", "B_token (bits/token)"] + [f"{GB} GB" for GB in memory_GB]
+    ["Model", "Precision", "Attention", "H_KV", "B_token"] + [f"{GB} GB" for GB in memory_GB]
 )
 
 print(tabulate(entries, headers=headers))
+
+# Below code saves the results as a .csv file for potential data analysis abd visualizations
+with open("REPLACE_NAME_EVERYTIME_YOU_RUN_THE_SCRIPT.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(headers)
+    writer.writerows(entries)
+
+print("Results are saved as .csv file!")
