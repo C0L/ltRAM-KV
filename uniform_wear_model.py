@@ -66,7 +66,7 @@ for precision, bit in b.items():
         for N_GB, N_bits in zip(memory_GB, memory_bits):
 
             if N_GB < param:
-                row.append("NA")
+                row.append(np.nan) # Originally "NA"
                 continue
 
             R_max = get_R_max(W, N_bits, B_token, t_life)
