@@ -27,9 +27,11 @@ b = {
 }
 
 # Maximum endurance writes (W) and device lifespan in seconds (t_life)
-W = 10**5
-t_life = 5 * 3.154e7 
+# W = 10**5 # RRAM Endurance 
+# W = 10**15 # STT-MRAM Endurance
+W = 10**13 # FeRAM Endurance
 
+t_life = 5 * 3.154e7 
 
 # Functions to get H_KV, B_token, and R_max
 def get_H_KV(attention_type, n_head):
@@ -83,9 +85,11 @@ headers = (
 print(tabulate(entries, headers=headers))
 
 # Below code saves the results as a .csv file for potential data analysis abd visualizations
-with open("REPLACE_NAME_EVERYTIME_YOU_RUN_THE_SCRIPT.csv", "w", newline="") as f:
+with open("CHANGE_NAME_OR_DELETE.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(headers)
     writer.writerows(entries)
 
 print("Results are saved as .csv file!")
+
+# CHANGE_NAME_OR_DELETE
