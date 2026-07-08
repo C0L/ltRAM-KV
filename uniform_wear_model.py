@@ -3,7 +3,7 @@ import itertools as it
 import csv
 from tabulate import tabulate
 
-
+# This code is implementing Scenario 1: Uniform Wear
 
 # Nested dictionary of models with their parameters
 models = {
