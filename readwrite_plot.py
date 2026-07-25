@@ -35,8 +35,7 @@ b_token = N * 2 * H_KV * d_head * b # bits of KV per token, all layers
 # total_read_bits  = decode_read_bits
 # total_energy = total_write_bits * write_energy + total_read_bits * read_energy # in Joules
 
-
-prompt_lengths = [2**i for i in range(2, 18)]   # 4, 8, 16, ... 32768
+prompt_lengths = [2**i for i in range(2, 19)]   
 energy_ratios = []
  
 for prompt_length in prompt_lengths:
@@ -57,5 +56,21 @@ for prompt_length in prompt_lengths:
  
     energy_ratios.append((total_read_bits * read_energy) / (total_write_bits * write_energy)) # Joules / Joules 
   
- 
+# Plot
+
+plt.plot(prompt_lengths, energy_ratios, color = "r", lw = 2, label = "RRAM")
+plt.axhline(1.0, color = "k", lw = 1.5, ls = "--")
+
+plt.text(prompt_lengths[0], 1.5, "read-dominated", fontsize = 10, color = "gray")
+plt.text(prompt_lengths[0], 0.5, "write-dominated", fontsize = 10, color = "gray")
+
+plt.xscale("log")
+plt.yscale("log")
+plt.xlabel("Prompt Length (Tokens)")
+plt.ylabel("KV Read/Write Energy Ratio")
+plt.title("RRAM KV-Energy Asymmetry")
+
+plt.grid(True, which = "both", alpha = 0.3)
+plt.legend()
+plt.show()
 
