@@ -82,5 +82,7 @@ plt.title("KV-Energy Asymmetry")
  
 plt.grid(True, which = "both", alpha = 0.3)
 plt.legend()
+#plt.savefig("/Users/zoehong/Desktop/Figure_3.pdf")
+
 plt.show()
 
